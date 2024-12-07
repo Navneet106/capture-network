@@ -1,11 +1,88 @@
-### README
-
 # Network Traffic Capture and Filtering
 
 This project captures and monitors network traffic on a given interface, allowing you to capture all incoming and outgoing packets, and optionally filter packets based on a specified IP address. The captured packets are saved in JSON files, and you can download them in Excel format. This script uses the `scapy` library for packet sniffing and Python's built-in functionalities for handling the data.
 
 ---
+# Project Setup Guide
 
+This guide provides step-by-step instructions for setting up the project on your system.
+
+---
+
+## Prerequisites
+
+1. **Python**  
+   Ensure Python (version 3.8 or above) is installed on your system.  
+   [Download Python here](https://www.python.org/downloads/).
+
+2. **Node.js**  
+   Ensure Node.js (version 18 or above) is installed.  
+   [Download Node.js here](https://nodejs.org/).
+
+---
+
+## Installation Steps
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/Navneet106/capture-network/
+cd capture-network
+```
+### Step 2: Setup the Backend
+1. Create a Virtual Environment (Optional but Recommended)
+    Use the following commands based on your OS:
+    - Windows:
+```bash
+python -m venv env
+.\env\Scripts\activate
+```
+- macOS/Linux:
+```bash
+python3 -m venv env
+source env/bin/activate
+```
+2. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+3. Install Additional Library for Windows (if required)
+For Windows users, download and install the Npcap library:
+[Npcap](https://npcap.com/) Official Website.
+
+    macOS and Linux users can skip this step.\
+
+### Step 3: Setup the Frontend
+1. Navigate to the frontend folder:
+```bash
+cd frontend
+```
+2. Install the dependencies:
+```bash
+npm install
+```
+### Running the Project
+Open two terminals to run the frontend and backend simultaneously.
+
+1. Terminal 1: Run the Frontend
+
+Navigate to the frontend folder and start the Next.js development server:
+
+```bash
+npm run dev
+```
+2. Terminal 2: Run the Backend
+
+Navigate to the project root (if not already there) and start the Python script:
+```bash
+python python-sniffer.py
+```
+### Notes
+
+    Make sure both Python and Node.js are in your system's PATH.
+    If you encounter any issues, double-check the prerequisites and installation steps.
+    This project uses Next.js for the frontend and a Python script for the backend, so both must run concurrently for full functionality.
+    
 ## Story Behind the Project
 
 ### Initial Approach: Terminal-based Packet Capture
