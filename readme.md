@@ -121,3 +121,4 @@ To download captured data, either filtered or unfiltered, use the download butto
 - The script runs indefinitely until manually stopped. It will continuously capture packets and update the output files.
 - Make sure to run the script with appropriate permissions (administrative/root) for capturing network traffic.
   
+![Screenshot 2024-12-07 at 16-12-54 Packet Sniffer](https://github.com/user-attachments/assets/242328e7-497c-4aea-9a34-b7644a44dbf2)
