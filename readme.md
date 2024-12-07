@@ -67,16 +67,17 @@ This project captures network traffic on a specified interface, with optional fi
      ```bash
      python -m venv env
      .\env\Scripts\activate
+     pip install scapy websockets
      ```
+     
    - **macOS/Linux**:
      ```bash
      python3 -m venv env
      source env/bin/activate
      ```
-
-3. Install Python dependencies:
+  Install Python dependencies:
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirment.txt
    ```
 
 4. Windows users: Install [Npcap](https://npcap.com/).
