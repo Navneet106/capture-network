@@ -74,10 +74,7 @@ This project captures network traffic on a specified interface, with optional fi
      ```bash
      python3 -m venv env
      source env/bin/activate
-     ```
-  Install Python dependencies:
-   ```bash
-   pip install -r requirment.txt
+     pip install -r requirment.txt
    ```
 
 4. Windows users: Install [Npcap](https://npcap.com/).
@@ -89,7 +86,6 @@ This project captures network traffic on a specified interface, with optional fi
 
 Run the Python script to start packet sniffing:
 ```bash
-cd ..
 python packet-sniffer.py
 ```
 ---
