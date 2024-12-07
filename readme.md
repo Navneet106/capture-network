@@ -48,7 +48,7 @@ This project captures network traffic on a specified interface, with optional fi
    [Download Node.js](https://nodejs.org/)
 
 3. **Additional Requirements for Windows:**  
-   - Install [Npcap](https://npcap.com/) for packet sniffing.
+   Install [Npcap](https://npcap.com/) for packet sniffing.
 
 ---
 
@@ -82,9 +82,19 @@ This project captures network traffic on a specified interface, with optional fi
 
 4. Windows users: Install [Npcap](https://npcap.com/).
 
+
+## Usage
+
+### Running the Backend
+
+Run the Python script to start packet sniffing:
+```bash
+cd ..
+python packet-sniffer.py
+```
 ---
 
-### Frontend Setup
+### Frontend Setup open a new terminal
 
 1. Navigate to the frontend directory:
    ```bash
@@ -97,20 +107,11 @@ This project captures network traffic on a specified interface, with optional fi
    ```
 
 ---
-
-## Usage
-
-### Running the Backend
-
-Run the Python script to start packet sniffing:
-```bash
-python python-sniffer.py
-```
-
 ### Running the Frontend
 
 Start the Next.js development server:
 ```bash
+cd frontend
 npm run dev
 ```
 
