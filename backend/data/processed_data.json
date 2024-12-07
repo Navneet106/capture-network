@@ -1,0 +1,83 @@
+{
+    "incoming": [
+        {
+            "src": "192.168.1.1",
+            "dst": "192.168.1.255",
+            "protocol": "Ether",
+            "summary": "Ether / IP / UDP 192.168.1.1:47110 > 192.168.1.255:9995 / NetflowHeader / Raw"
+        },
+        {
+            "src": "192.168.1.3",
+            "dst": "224.0.0.251",
+            "protocol": "Ether",
+            "summary": "Ether / IP / UDP / mDNS Qry b'_0F5096E8._sub._googlecast._tcp.local.'"
+        },
+        {
+            "src": "192.168.1.3",
+            "dst": "224.0.0.22",
+            "protocol": "Ether",
+            "summary": "Ether / 192.168.1.3 > 224.0.0.22 igmp / Raw"
+        },
+        {
+            "src": "192.168.1.3",
+            "dst": "224.0.0.251",
+            "protocol": "Ether",
+            "summary": "Ether / IP / UDP / mDNS Qry b'_0F5096E8._sub._googlecast._tcp.local.'"
+        },
+        {
+            "src": "192.168.1.3",
+            "dst": "224.0.0.22",
+            "protocol": "Ether",
+            "summary": "Ether / 192.168.1.3 > 224.0.0.22 igmp / Raw"
+        },
+        {
+            "src": "192.168.1.3",
+            "dst": "224.0.0.251",
+            "protocol": "Ether",
+            "summary": "Ether / IP / UDP / mDNS Qry b'_0F5096E8._sub._googlecast._tcp.local.'"
+        },
+        {
+            "src": "192.168.1.3",
+            "dst": "224.0.0.251",
+            "protocol": "Ether",
+            "summary": "Ether / IP / UDP / mDNS Qry b'_0F5096E8._sub._googlecast._tcp.local.'"
+        },
+        {
+            "src": "192.168.1.1",
+            "dst": "192.168.1.255",
+            "protocol": "Ether",
+            "summary": "Ether / IP / UDP 192.168.1.1:47110 > 192.168.1.255:9995 / NetflowHeader / Raw"
+        },
+        {
+            "src": "192.168.1.3",
+            "dst": "224.0.0.22",
+            "protocol": "Ether",
+            "summary": "Ether / 192.168.1.3 > 224.0.0.22 igmp / Raw"
+        },
+        {
+            "src": "192.168.1.1",
+            "dst": "192.168.1.255",
+            "protocol": "Ether",
+            "summary": "Ether / IP / UDP 192.168.1.1:47110 > 192.168.1.255:9995 / NetflowHeader / Raw"
+        },
+        {
+            "src": "192.168.1.6",
+            "dst": "142.251.42.66",
+            "protocol": "Ether",
+            "summary": "Ether / IP / TCP 192.168.1.6:37592 > 142.251.42.66:https PA / Raw"
+        },
+        {
+            "src": "142.251.42.66",
+            "dst": "192.168.1.6",
+            "protocol": "Ether",
+            "summary": "Ether / IP / TCP 142.251.42.66:https > 192.168.1.6:37592 PA / Raw"
+        },
+        {
+            "src": "192.168.1.6",
+            "dst": "142.251.42.66",
+            "protocol": "Ether",
+            "summary": "Ether / IP / TCP 192.168.1.6:37592 > 142.251.42.66:https A"
+        }
+    ],
+    "outgoing": []
+}
