@@ -1,202 +1,159 @@
 # Network Traffic Capture and Filtering
 
-This project captures and monitors network traffic on a given interface, allowing you to capture all incoming and outgoing packets, and optionally filter packets based on a specified IP address. The captured packets are saved in JSON files, and you can download them in Excel format. This script uses the `scapy` library for packet sniffing and Python's built-in functionalities for handling the data.
+A robust, real-time network traffic monitoring tool that captures and filters network packets. It includes features for packet capture, IP-based filtering, real-time visualization via WebSocket, and exporting data to Excel format. Designed with a Python-based backend and a Next.js frontend, this project combines the power of `scapy` for packet sniffing and modern web technologies for visualization.
 
 ---
-# Project Setup Guide
 
-This guide provides step-by-step instructions for setting up the project on your system.
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+- [Usage](#usage)
+  - [Running the Backend](#running-the-backend)
+  - [Running the Frontend](#running-the-frontend)
+  - [Web Interface](#web-interface)
+  - [Exporting Data](#exporting-data)
+- [Project Structure](#project-structure)
+- [Dependencies](#dependencies)
+- [Notes](#notes)
+- [Future Enhancements](#future-enhancements)
+
+---
+
+## Introduction
+
+This project captures network traffic on a specified interface, with optional filtering by IP address. Packets are saved in JSON format, displayed in real-time on a web interface, and downloadable as Excel files. It integrates Python for backend processing and Next.js for a seamless user interface.
+
+---
+
+## Features
+
+- **Packet Capture:** Monitors incoming and outgoing packets.
+- **IP-Based Filtering:** Filters packets based on user-specified IP addresses.
+- **Real-Time Monitoring:** Displays live traffic data via WebSocket.
+- **Data Export:** Allows exporting captured data to Excel format.
+- **Cross-Platform:** Compatible with Windows, macOS, and Linux.
 
 ---
 
 ## Prerequisites
 
-1. **Python**  
-   Ensure Python (version 3.8 or above) is installed on your system.  
-   [Download Python here](https://www.python.org/downloads/).
+1. **Python (v3.8 or above)**  
+   [Download Python](https://www.python.org/downloads/)
 
-2. **Node.js**  
-   Ensure Node.js (version 18 or above) is installed.  
-   [Download Node.js here](https://nodejs.org/).
+2. **Node.js (v18 or above)**  
+   [Download Node.js](https://nodejs.org/)
+
+3. **Additional Requirements for Windows:**  
+   - Install [Npcap](https://npcap.com/) for packet sniffing.
 
 ---
 
-## Installation Steps
+## Installation
 
-### Step 1: Clone the Repository
+### Backend Setup
 
-```bash
-git clone https://github.com/Navneet106/capture-network/
-cd capture-network
-```
-### Step 2: Setup the Backend
-1. Create a Virtual Environment (Optional but Recommended)
-    Use the following commands based on your OS:
-    - Windows:
-```bash
-python -m venv env
-.\env\Scripts\activate
-```
-- macOS/Linux:
-```bash
-python3 -m venv env
-source env/bin/activate
-```
-2. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-3. Install Additional Library for Windows (if required)
-For Windows users, download and install the Npcap library:
-[Npcap](https://npcap.com/) Official Website.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Navneet106/capture-network/
+   cd capture-network
+   ```
 
-    macOS and Linux users can skip this step.\
+2. Create a virtual environment (optional but recommended):
+   - **Windows**:
+     ```bash
+     python -m venv env
+     .\env\Scripts\activate
+     ```
+   - **macOS/Linux**:
+     ```bash
+     python3 -m venv env
+     source env/bin/activate
+     ```
 
-### Step 3: Setup the Frontend
-1. Navigate to the frontend folder:
-```bash
-cd frontend
-```
-2. Install the dependencies:
-```bash
-npm install
-```
-### Running the Project
-Open two terminals to run the frontend and backend simultaneously.
+3. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-1. Terminal 1: Run the Frontend
+4. Windows users: Install [Npcap](https://npcap.com/).
 
-Navigate to the frontend folder and start the Next.js development server:
+---
 
-```bash
-npm run dev
-```
-2. Terminal 2: Run the Backend
+### Frontend Setup
 
-Navigate to the project root (if not already there) and start the Python script:
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+---
+
+## Usage
+
+### Running the Backend
+
+Run the Python script to start packet sniffing:
 ```bash
 python python-sniffer.py
 ```
-### Notes
 
-    Make sure both Python and Node.js are in your system's PATH.
-    If you encounter any issues, double-check the prerequisites and installation steps.
-    This project uses Next.js for the frontend and a Python script for the backend, so both must run concurrently for full functionality.
-    
-## Story Behind the Project
+### Running the Frontend
 
-### Initial Approach: Terminal-based Packet Capture
-
-The journey began by understanding the core concept of packet sniffing. Initially, I wrote a simple Python script using the `scapy` library, which could capture packets from the network interface and save the captured data in a `.pcap` file. This file format is commonly used to store network traffic data, and it allowed me to easily monitor and store packets for further analysis. The goal was to capture all network traffic, both incoming and outgoing, for a given network interface.
-
-Here’s how I started:
-
-1. **Scapy Sniffing**: I used `scapy`'s built-in sniffing capabilities to capture packets in real time.
-2. **PCAP File**: Instead of directly processing the captured packets, I first focused on saving them to a `.pcap` file. This would allow me to later analyze or export the data if needed.
-3. **Basic Capture**: The program was simple and terminal-based, with minimal filtering capabilities at this point. It saved all packets, regardless of their source or destination.
-`The File Name where this code is present at is captureTraffic.py`
-
-This early version of the script helped me understand how to capture network traffic, and provided a foundation for further improvements.
-
----
-
-### Moving to Backend: Capturing Packets and Filtering by IP [Present in the Backend-approcah branch]
-
-Once I had a basic packet capturing script working, I realized that it would be beneficial to introduce some filtering based on specific IP addresses. The idea was to capture all packets, but if the user specified an IP, only packets involving that IP (either as the source or destination) would be captured.
-
-To achieve this, I added a few improvements:
-
-1. **IP Filtering**: I used `scapy` to inspect each packet and checked if the source or destination IP matched the user’s specified IP. If it matched, the packet would be captured; otherwise, it would be ignored.
-2. **Separate File for Filtered Packets**: If an IP address was provided, the filtered packets were saved in a separate `.pcap` or `.json` file. This allowed me to keep both the full capture and the filtered capture distinct.
-3. **Backend Logic**: The backend of the system was simple but effective. It was still a command-line tool where the user would start the packet capture and provide an IP address to filter. At this point, the program ran in the terminal and displayed real-time packet information.
-
----
-
-### Adding WebSocket for Real-Time Monitoring
-
-After successfully capturing packets and filtering by IP, I wanted to make the data more accessible and interactive. I realized that having a terminal-only application would be limiting, so I decided to move to a web-based solution that would allow users to see the captured packets in real time.
-
-Here’s how I expanded the project:
-
-1. **WebSocket Integration**: I introduced `websockets`, a Python library that allows real-time communication between the server and the client (web browser). I used WebSocket to broadcast captured packet data to the front end as soon as they were sniffed.
-2. **Frontend Interface**: The frontend was created as a simple web page, which connected to the WebSocket server. The captured packet data was displayed in real time on the page.
-3. **Packet Display**: On the web interface, I used a simple table to show packet details like the source IP, destination IP, protocol, and summary of the packet. This allowed users to see all incoming and outgoing network traffic in a user-friendly manner.
-4. **Web Interface for Filtering**: The user could specify an IP address via the web interface, and the user see the filter the packets accordingly. The filtered packets were displayed in real-time on the frontend.
-   
-By integrating WebSockets, I could push updates to the frontend whenever a new packet was captured, giving users an instant view of network activity. The frontend displayed the captured data dynamically in a simple table format, making it easy to monitor and analyze network traffic.
-
----
-
-### Adding Data Download Feature
-
-With the real-time WebSocket server and frontend interface working, I wanted to provide a more useful way to work with the captured data. I added a feature to allow users to download the captured data in Excel format.
-
-Here’s how I achieved it:
-
-1. **Excel Download**: I created an option on the web interface to download the captured packets as an Excel file. This allowed users to download both filtered and unfiltered packets. I implemented the download functionality using native JavaScript ,so the user could export the data without relying on any external libraries.
-2. **Filtered Download**: If the user applied a filter (e.g., by IP address), the downloaded Excel file would contain only the packets that met the filter criteria. If no filter was applied, all packets would be included in the download.
-
----
-
-### Final Thoughts
-
-At the end of this journey, I had a full-fledged network traffic monitoring system. The solution captures all network traffic, optionally filters by IP address, broadcasts captured packets to a web interface using WebSockets, and allows the user to download the packet data in Excel format.
-
-The final solution is a robust, interactive tool that allows real-time monitoring of network traffic and provides an intuitive way to analyze the data. Here's a quick summary of the final steps:
-
-1. **Scapy for Packet Sniffing**: Captured all network packets.
-2. **IP Filtering**: Captured only packets involving the specified IP address.
-3. **WebSocket for Real-Time Data**: Enabled live packet display in a web interface.
-4. **Excel Download**: Allowed users to download the captured data, filtered or unfiltered.
-
-This solution, while simple, demonstrates the power of combining Python’s `scapy` for packet sniffing with modern web technologies like WebSockets to create a real-time network monitoring tool.
-
-# How to Run
-
-### 1. Install Dependencies
-
-You need to install `scapy` to run this script. You can install it using `pip`:
-
+Start the Next.js development server:
 ```bash
-pip install scapy
+npm run dev
 ```
 
-### 2. Running the Script
+### Web Interface
 
-To run the packet sniffer, execute the following command:
+Access the web interface at [http://localhost:3000](http://localhost:3000). The captured packets will be displayed in a dynamic table, with filtering options available.
 
-```bash
-python packet-sniffer.py
-```
+### Exporting Data
 
-This will start the script, begin capturing traffic on the specified network interface, and save packets in a JSON file.
+Captured packets can be downloaded in Excel format using the **Download** button on the web interface.
 
-If you want to specify an IP address to filter packets, you can pass it as an argument to the script.
+---
 
-### 3. Web Interface
+## Project Structure
 
-Once the packet sniffer is running, you can access the WebSocket server by visiting:
+- **Backend:** Handles packet capture and IP filtering using Python and `scapy`.
+- **Frontend:** Provides a real-time interface built with Next.js and WebSocket integration.
 
-```
-ws://localhost:8765
-```
-
-The WebSocket will broadcast captured packet information in real time, which can be displayed in a simple table format in the web browser.
-
-### 4. Download Data
-
-To download captured data, either filtered or unfiltered, use the download button provided in the web interface. The data will be available as an Excel file.
+---
 
 ## Dependencies
 
-- `scapy`: For packet sniffing and network traffic analysis.
-- `websockets`: For broadcasting captured packets to the web interface in real time.
-- Python's built-in libraries for file handling and Excel conversion.
+- **Python Libraries:**
+  - `scapy` - Packet sniffing and network analysis.
+  - `websockets` - Real-time WebSocket communication.
+
+- **Node.js Libraries:**  
+  Listed in `frontend/package.json`.
+
+---
 
 ## Notes
 
-- The script runs indefinitely until manually stopped. It will continuously capture packets and update the output files.
-- Make sure to run the script with appropriate permissions (administrative/root) for capturing network traffic.
-  ![Screenshot 2024-12-07 at 16-12-38 Packet Sniffer](https://github.com/user-attachments/assets/9c02d9f4-faec-4607-b26f-caf6006aa6bc)
+- Run the backend with administrative/root permissions for capturing network traffic.
+- Ensure Python and Node.js are added to the system's PATH environment variable.
+
+---
+
+## Future Enhancements
+
+- Add protocol-based filtering.
+- Include advanced analytics and visualization for captured data.
+- Support exporting data in additional formats (e.g., CSV, JSON).
+
+![Screenshot 2024-12-07 at 16-12-38 Packet Sniffer](https://github.com/user-attachments/assets/9c02d9f4-faec-4607-b26f-caf6006aa6bc)
 
 ![Screenshot 2024-12-07 at 16-12-54 Packet Sniffer](https://github.com/user-attachments/assets/242328e7-497c-4aea-9a34-b7644a44dbf2)
