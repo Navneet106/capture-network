@@ -66,7 +66,7 @@ This project captures network traffic on a specified interface, with optional fi
    - **Windows**:
      ```bash
      python -m venv env
-     .\env\Scripts\activate
+     .\env\Scripts\activate
      ```
    - **macOS/Linux**:
      ```bash
